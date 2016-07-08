@@ -1,0 +1,29 @@
+mkdir test
+cd test
+git init
+touch a.txt
+echo "Git is good" > a.txt
+git add -A
+git status
+git commit "Complete Q1"
+mkdir subtest
+cd subtest
+touch b.txt
+cd ../
+touch a1.txt a2.txt
+git add -A
+git status
+git commit -m "Complete Q2"
+git log
+git add remote origin "https://github.com/sjstebbins/test.git"
+echo "Github is awesome" >> a.txt
+git add -A
+git diff
+git commit -m "Complete Q3"
+git push origin master
+echo "EDIT" > a1.txt
+git reset HEAD
+echo "EDIT" > a1.txt
+git commit -m -a "Complete Q4"
+git reflog
+git checkout a0283aa
