@@ -11,7 +11,7 @@ while (fib[i-1] < 4000000) {
 }
 #Q2---------
 mv_multiply = function (m, v) {
-  mapply("*",as.data.frame(m),v)
+  m%*%v
 }
 #Q3---------
 mad = function(x) {
