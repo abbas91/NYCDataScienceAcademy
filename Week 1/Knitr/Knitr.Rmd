@@ -1,0 +1,261 @@
+---
+title: "Jumpstart: Knitr"
+author: "NYC DataScience Academy"
+output:
+  ioslides_presentation:
+    css: assets/css/ioslides.css
+    logo: assets/img/logo.png
+---
+
+## Outline
+
+- HTML Documents
+- Markdown Basics
+- R Code Chunks
+- ioslides
+
+
+# HTML Documents
+
+## Create a HTML Document
+
+<div class="columns-2">
+<img src="images/create_html_1.png" alt="output_option" height="400">
+<img src="images/create_html_2.png" alt="output_option" width="375" height="300">
+</div>
+
+## Overview
+- YAML Metadata: [YAML](http://en.wikipedia.org/wiki/YAML) document options
+- Markdown: Article text
+- R Code Chunk: Executible R code
+<img src="images/md_and_R_code_chunk.png" alt="output_option" width="600" height="350">
+
+## Rendering Output
+
+- RStudio: "Knit" command (**Command+Shift+K**)
+- Command line: `rmarkdown::render` function
+```r
+rmarkdown::render("input.Rmd")
+```
+
+# Markdown Basics
+
+## Markdown Quick Reference
+
+<img src="images/md_quick_ref.png" alt="md_quick_ref" height="350" width="650">
+
+- For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+
+## Emphasis
+```markdown
+*italic*   **bold**
+
+_italic_   __bold__
+```
+
+*I am italic*   
+
+**I am bold**
+
+## Headers
+
+```markdown
+# Header 1
+
+## Header 2
+
+### Header 3
+```
+
+<h2> Header 1 </h2>
+<h3> Header 2 </h3>
+<h1> Header 3 </h1>
+
+## Lists {.columns-2}
+```html
+Unordered List:
+* Item 1
+* Item 2
+    + Item 2a
+    + Item 2b
+    
+Ordered List:
+1. Item 1
+2. Item 2
+3. Item 3
+    + Item 3a
+    + Item 3b
+```
+```
+Unordered List:
+* Item 1
+* Item 2
+    + Item 2a
+    + Item 2b
+    
+Ordered List:
+1. Item 1
+2. Item 2
+3. Item 3
+    + Item 3a
+    + Item 3b
+```
+
+## Links
+
+A plain http address or add a link to a phrase.
+
+**Inline Link:**
+
+```html
+[The link of NYC Datascience Academy](http://nycdatascience.com/)
+```
+[The link of NYC Datascience Academy](http://nycdatascience.com/)
+
+**Reference Link**:
+
+```html
+[The link of your blog post][blog]
+
+[blog]: http://blog.nycdatascience.com/
+```
+
+[The link of your blog post][blog]
+
+[blog]: http://blog.nycdatascience.com/
+
+
+# R Code Chunks
+
+## Overview
+
+R code will be evaluated and printed
+
+<pre class="markdown"><code>&#96;&#96;&#96;{r}
+summary(cars$dist)
+&#96;&#96;&#96;
+</code></pre>
+
+
+```{r}
+summary(cars$dist)
+```
+
+## Named R code chunk. 
+
+<pre class="markdown"><code>&#96;&#96;&#96;{r plot, echo=FALSE}
+summary(cars)
+plot(cars)
+&#96;&#96;&#96;
+</code></pre>
+
+- Easy Navigation in RStudio  
+
+    ![chunk name](images/chunk_name.png)
+
+
+## Basic Chunk Options
+
+- `echo`(TRUE): whether to include R source code in the output file
+- `eval`(TRUE): whether to evaluate the code chunk
+- `message`(TRUE): whether to preserve messages emitted by message()
+- `include`(TRUE): if include=FALSE, nothing will be written into the output document, but the code is still evaluated and plot files are generated
+- `warning`(TRUE): whether to preserve warnings in the output 
+
+## Inline R Code
+
+
+![Markdown Inline](images/markdownInline.png)
+
+
+<br>
+
+```r
+I counted `r 1+1` red trucks on the highway.
+```
+
+
+## Plots
+
+- `dev`('png'): figure format(png, jpeg, tiff, svg, ...)
+- `fig.path`('figure/'): figure path
+- `fig.width`(7): figure width
+- `fig.height`(7): figure height
+
+<pre class="markdown"><code>&#96;&#96;&#96;{r dev='svg', fig.path='myplot', fig.height=8}
+plot(iris)
+&#96;&#96;&#96;
+</code></pre>
+
+## Plots
+
+```{r, echo=FALSE}
+plot(iris)
+```
+
+
+# ioslides
+
+## Overview
+
+- A feature of RStudio that create an [ioslides](https://code.google.com/p/io-2012-slides/) presentation.
+
+<div class="columns-2">
+<img src="images/create_html_1.png" alt="output_option" height="400">
+<img src="images/create_html_3.png" alt="output_option" width="375" height="300">
+</div>
+
+## Create an ioslides
+- The output of rmarkdown file is different from the html one.
+
+<img src="images/create_ioslides.png" alt="md_quick_ref" height="250" width="450">
+
+## Section
+
+- `#`: create a section
+- `##`: create a new slide
+- `---`: create a new slide without a header(horizontal rule)
+- `|`: add a subtitle
+
+
+```yaml
+# section
+
+## slide 1
+
+---
+
+## slide 2 | with subtitle
+```
+
+## Adding a Logo
+
+Add a customized logo:
+
+```yaml
+---
+output:
+  ioslides_presentation:
+    logo: logo.png
+---
+```
+
+## R code chunks
+
+<pre class="markdown"><code>&#96;&#96;&#96;{r, echo=FALSE}
+summary(cars)
+&#96;&#96;&#96;
+</code></pre>
+
+```{r echo=FALSE}
+summary(cars)
+```
+
+
+
+
+
+
+
+ 

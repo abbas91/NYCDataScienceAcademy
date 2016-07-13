@@ -12,7 +12,8 @@
 /*2*/ SELECT employeename, hiredate, basewage FROM Employee;
 /*3*/ SELECT basewage * wagelevel from Employee;
 /*4*/ SELECT * FROM  Employee WHERE basewage BETWEEN 2000 AND 3000 ORDER BY basewage DESC;
-/*5*/ SELECT employeename, hiredate, basewage FROM Employee WHERE hiredate > 6/10/2010 AND employeename LIKE '%8';
+/*5*/ SELECT employeename, hiredate, basewage FROM Employee WHERE  DATEDIFF(HireDate, '2010-06-10') >= 0 AND employeename LIKE '%8';
+
 /*6*/ SELECT employeename, departmentid FROM Employee WHERE basewage * wagelevel > 7000;
 /*7*/ SELECT departmentid, basewage FROM Employee WHERE basewage >= 3000 GROUP BY departmentid HAVING COUNT(*) > 2;
 /*8*/ SELECT departmentid, AVG(basewage * wagelevel) FROM Employee GROUP BY departmentid ORDER BY AVG(basewage * wagelevel) ASC;
@@ -36,3 +37,5 @@
       (SELECT sex, COUNT(*) AS ct_1 FROM adult WHERE class = '<=50K' GROUP BY sex) AS tbl_1,
       (SELECT sex, COUNT(*) AS ct_2 FROM adult WHERE class = '>50K' GROUP BY sex) AS tbl_2
       WHERE tbl_1.sex = tbl_2.sex;
+
+## >>> good!
